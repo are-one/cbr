@@ -10,6 +10,8 @@ use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 
+Yii::$app->assetManager->bundles = ['yii\bootstrap4\BootstrapAsset' => false];
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -47,9 +49,9 @@ AppAsset::register($this);
                         ['label' => 'Penyakit', 'url' => ['/site/index']],
                         ['label' => 'Gejala', 'url' => ['/site/index']],
                         ['label' => 'Pengetahuan', 'url' => ['/site/index']],
-                        ['label' => 'Password', 'url' => ['/site/index']],
-                        ['label' => 'Konsultasi', 'url' => ['/site/index']],
-                        ['label' => 'Informasi', 'url' => ['/site/index']],
+                        ['label' => 'Password', 'url' => ['/site/index'],'visible' => Yii::$app->user->can('admin')],
+                        ['label' => 'Konsultasi', 'url' => ['/site/index'],'visible' => Yii::$app->user->can('admin')],
+                        ['label' => 'Informasi', 'url' => ['/site/index'],'visible' => Yii::$app->user->can('admin')],
                         // ['label' => 'About', 'url' => ['/site/about']],
                         // ['label' => 'Contact', 'url' => ['/site/contact']],
                         Yii::$app->user->isGuest ? (

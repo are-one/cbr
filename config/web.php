@@ -14,9 +14,14 @@ $config = [
     'modules' => [
         'admin' => [
             'class' => 'mdm\admin\Module',
+            'layout' => 'left-menu',
+            'mainLayout' => '@app/views/layouts/lama/main.php'
         ]
     ],
     'components' => [
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager', // or use 'yii\rbac\DbManager'
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'cbmQtZcWL5B3xMR_lrWonG3kGIoKdm0K',
@@ -48,17 +53,6 @@ $config = [
             ],
         ],
         'db' => $db,
-        'assetManager' => [
-            'bundles' => [
-                'yii\bootstrap4\BootstrapAsset' => [
-                    'css' => [],
-                    'js' => [],
-                ],
-            ],
-        ],
-        'authManager' => [
-            'class' => 'yii\rbac\PhpManager', // or use 'yii\rbac\DbManager'
-        ],
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
