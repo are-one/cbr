@@ -45,17 +45,18 @@ AppAsset::register($this);
 
                 <?= Nav::widget([
                     'options' => ['class' => 'navbar-nav'],
+                    'encodeLabels' => false,
                     'items' => [
-                        ['label' => 'Penyakit', 'url' => ['/site/index']],
-                        ['label' => 'Gejala', 'url' => ['/site/index']],
-                        ['label' => 'Pengetahuan', 'url' => ['/site/index']],
-                        ['label' => 'Password', 'url' => ['/site/index'],'visible' => Yii::$app->user->can('admin')],
-                        ['label' => 'Konsultasi', 'url' => ['/site/index'],'visible' => Yii::$app->user->can('admin')],
-                        ['label' => 'Informasi', 'url' => ['/site/index'],'visible' => Yii::$app->user->can('admin')],
+                        ['label' => '<span class="glyphicon glyphicon-pushpin"></span> Penyakit', 'url' => ['/penyakit/index'],'visible' => Yii::$app->user->can('admin')],
+                        ['label' => '<span class="glyphicon glyphicon-flash"></span> Gejala', 'url' => ['/gejala/index'],'visible' => Yii::$app->user->can('admin')],
+                        ['label' => '<span class="glyphicon glyphicon-star"></span> Pengetahuan', 'url' => ['/rule/index'],'visible' => Yii::$app->user->can('admin')],
+                        ['label' => '<span class="glyphicon glyphicon-lock"></span> Password', 'url' => ['/site/index'],'visible' => Yii::$app->user->can('admin')],
+                        ['label' => '<span class="glyphicon glyphicon-stats"></span> Konsultasi', 'url' => ['/site/index'],'visible' => !Yii::$app->user->can('admin')],
+                        ['label' => '<span class="glyphicon glyphicon-info-sign"></span> Informasi', 'url' => ['/site/index'],'visible' => !Yii::$app->user->can('admin')],
                         // ['label' => 'About', 'url' => ['/site/about']],
                         // ['label' => 'Contact', 'url' => ['/site/contact']],
                         Yii::$app->user->isGuest ? (
-                            ['label' => '<span class="glyphicon glyphicon-log-in"></span> Login', 'url' => ['/site/login'], 'encode' => false]
+                            ['label' => '<span class="glyphicon glyphicon-log-in"></span> Login', 'url' => ['/site/login']]
                         ) : (
                             '<li>'
                             . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
